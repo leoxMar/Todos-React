@@ -1,0 +1,11 @@
+const tasks = require('./route/tasks')
+const connection = require('./db')
+const cors=require('cors')
+const express = require('express')
+const app= express()
+connection()
+app.use(cors())
+app.use(express.json())
+app.use("/api/tasks",tasks)
+const port = process.env.PORT || 3000;
+app.listen(port,()=>console.log(`port aperta e ti asolto, frocione :> ${port}...`))
